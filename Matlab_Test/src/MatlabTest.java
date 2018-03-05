@@ -23,8 +23,12 @@ public class MatlabTest {
 		matlab.eval("cd matlab_scripts");
         matlab.eval("cd");
         
+        
         //Object obj1 = matlab.feval("differenza",vect, vect2);
-        Object obj1 = matlab.feval("ruotaTerna",vect, angles, "deg");
+        //Object obj1 = matlab.feval("ruotaTerna",vect, angles, "deg");
+        Object obj1 = null;
+        for (int i =0; i<10; i++)
+        	obj1 = matlab.feval("somma", i);
         
         System.out.println("Class: "+obj1.getClass().getSimpleName().toString());
         
