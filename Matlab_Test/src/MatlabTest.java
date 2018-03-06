@@ -4,12 +4,7 @@
  *
  */
 
-<<<<<<< HEAD
-
-
-=======
 import java.io.StringWriter;
->>>>>>> branch 'master' of https://github.com/AppleInside/MATLAB-Simple-Script.git
 import java.util.concurrent.ExecutionException;
 
 import java.util.concurrent.RejectedExecutionException;
@@ -21,7 +16,7 @@ public class MatlabTest {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalStateException, InterruptedException, RejectedExecutionException, ExecutionException {
 		
-		System.out.println("Inizializzo MATLAB Engine...");
+		System.out.println("Inizializzo il MATLAB Engine...");
 		
 		// Start MATLAB Session
 		MatlabEngine matlab = MatlabEngine.startMatlab();
@@ -43,7 +38,6 @@ public class MatlabTest {
         */
         
 		
-        
         /* VARIABLES VISIBILITY */
 		matlab.eval("global sumVar");
         matlab.eval("sumVar = 10;");
@@ -51,17 +45,12 @@ public class MatlabTest {
         matlab.feval(0,"sommaNum", 0);
          
         
-        
-        
         // Salvo tutte le variabili del workspace in un file .mat
-        
         //matlab.eval("save('workspaceVars');");
         //matlab.eval("whos -f workspaceVars.mat;", writer, null);
         
         
         // Close MATLAB Session
-        matlab.close();
-        
+        matlab.close();    
 	}
-
 }
