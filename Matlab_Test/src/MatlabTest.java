@@ -41,8 +41,8 @@ public class MatlabTest {
         /* VARIABLES VISIBILITY */
 		matlab.eval("global sumVar");
         matlab.eval("sumVar = 10;");
-        
-        matlab.feval(0,"sommaNum", 0);
+        // esegue un intero Script
+        matlab.eval("VariablesVisibility");
          
         
         // Salvo tutte le variabili del workspace in un file .mat
