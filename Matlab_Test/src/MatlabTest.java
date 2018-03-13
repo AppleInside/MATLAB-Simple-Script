@@ -5,6 +5,7 @@
  */
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import java.util.concurrent.RejectedExecutionException;
@@ -15,6 +16,7 @@ import com.mathworks.engine.*;
 public class MatlabTest {
 
 	public static void main(String[] args) throws IllegalArgumentException, IllegalStateException, InterruptedException, RejectedExecutionException, ExecutionException {
+
 		
 		System.out.println("Inizializzo il MATLAB Engine...");
 		
@@ -42,8 +44,8 @@ public class MatlabTest {
 		matlab.eval("global sumVar");
         matlab.eval("sumVar = 10;");
         // esegue un intero Script
-        matlab.eval("VariablesVisibility");
-         
+        matlab.eval("VariablesVisibility", writer, null);
+        System.out.println(writer);
         
         // Salvo tutte le variabili del workspace in un file .mat
         //matlab.eval("save('workspaceVars');");
