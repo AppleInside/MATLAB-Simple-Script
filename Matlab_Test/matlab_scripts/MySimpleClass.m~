@@ -1,0 +1,85 @@
+classdef MySimpleClass  < matlab.mixin.SetGet
+     
+    properties(Constant)
+        c_1 = 500;       
+    end
+    
+    % Quando il GetAccess è public, posso vedere il valore delle variabili
+    % dal pannello Workspace
+    properties(GetAccess = 'public', SetAccess = 'private')
+        p1;
+    end
+    
+    properties(GetAccess = 'public', SetAccess = 'public')
+        p2;    
+    end
+    
+    properties(GetAccess = 'private', SetAccess = 'private')
+        p3;    
+    end
+    
+    properties(Dependent)
+        dep1;
+    end
+    
+    
+    
+    
+    
+    
+    %% Setters/Getter
+    methods (Access = public)
+        
+        function set.dep1()
+            
+        end
+        
+    end
+    
+    
+        
+    %% Costruttore
+    methods
+        
+        function object = MySimpleClass(num)
+            object.p3 = 100;
+            object.p2 = 'CIAO';
+            object.p1 = num;
+            object.dep1 = object.p3 * object.p1;
+        end         
+    end 
+    
+    
+    
+    methods (Access = public)
+        
+        function increment(obj)
+            obj.p3 = obj.p3 + obj.c_1;
+        end
+    end
+    
+    
+    methods
+        % MATLAB Object ----> Struct
+        function str = getStruct(obj)
+            str = struct(obj);
+        end
+
+        
+        % Struct ---> MATLAB Object
+        function object = setStruct(classname, str)
+           %converts structure s to an object of class classname.
+           %assumes classname has a constructor which takes no arguments
+           object = eval(classname);  %create object
+           for fn = fieldnames(s)'    %enumerat fields
+              try
+                  object.(fn{1}) = s.(fn{1});   %and copy
+              catch
+                  warning('Could not copy field %s', fn{1});
+              end
+           end 
+        end
+    end
+    
+    
+end
